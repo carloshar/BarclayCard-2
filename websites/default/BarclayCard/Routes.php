@@ -7,8 +7,10 @@ class Routes implements \PHPBackend\Routes {
 
         //generate required database data + controllers
         $stockList = new \PHPBackend\DatabaseTable($pdo, 'stock', 'id');
+        $userList = new \PHPBackend\DatabaseTable($pdo, 'user', 'id');
 
         $stockController = new \BarclayCard\Controllers\Stock($stockList);
+        $userController = new \BarclayCard\Controllers\User($userList);
 
         //tells the program which functions to use based on the URL annd whether we are using $_POST
 
@@ -24,6 +26,17 @@ class Routes implements \PHPBackend\Routes {
                 'GET' => [
                     'controller' => $stockController,
                     'function' => 'list'
+                ]
+            ],
+
+            'login' => [
+                'GET' => [
+                    'controller' => $userController,
+                    'function' => 'loginForm'
+                ],
+                'POST' => [
+                    'controller' => $userController,
+                    'function' => 'loginSubmit'
                 ]
             ],
         ];
