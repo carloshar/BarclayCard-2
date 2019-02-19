@@ -11,6 +11,7 @@ class Routes implements \PHPBackend\Routes {
 
         $stockController = new \BarclayCard\Controllers\Stock($stockList);
         $userController = new \BarclayCard\Controllers\User($userList);
+        $shopController = new \BarclayCard\Controllers\Shop();
 
         //tells the program which functions to use based on the URL annd whether we are using $_POST
 
@@ -39,6 +40,13 @@ class Routes implements \PHPBackend\Routes {
                     'function' => 'loginSubmit'
                 ]
             ],
+
+            'dashboard' => [
+                'GET' => [
+                    'controller' => $shopController,
+                    'function' => 'dashboard_home'
+                ]
+            ]
         ];
         return $routes;
     }

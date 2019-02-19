@@ -1,9 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="/BCStyle.css"/>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
 		<title><?=$title?></title>
+		
+		<meta name="description" content="" />
+
+		<link rel="stylesheet" href="/BCStyle.css"/>
+		
+		<link rel="apple-touch-icon" sizes="180x180" href="/public/images/favicons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/public/images/favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/public/images/favicons/favicon-16x16.png">
+		<link rel="manifest" href="/public/site.webmanifest">
+		<link rel="mask-icon" href="/public/images/favicons/safari-pinned-tab.svg" color="#ffc80d">
+
+		<meta name="msapplication-TileColor" content="#ffc40d">
+		<meta name="theme-color" content="#ffffff">
 	</head>
 	<body>
 		<header>
@@ -66,7 +81,7 @@
 		?>
 		</main>
 		<footer>
-			&copy; Website name
+			&copy; 2019 Painting by Numbers
 		</footer>
 	</body>
 </html>
