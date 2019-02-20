@@ -10,12 +10,19 @@ class Routes implements \PHPBackend\Routes {
         $userList = new \PHPBackend\DatabaseTable($pdo, 'user', 'id');
         $categoryList = new \PHPBackend\DatabaseTable($pdo, 'category', 'id');
         $reviewList = new \PHPBackend\DatabaseTable($pdo, 'review', 'id');
+        $orderList = new \PHPBackend\DatabaseTable($pdo, 'order', 'id');
+        $artistList = new \PHPBackend\DatabaseTable($pdo, 'artist', 'id');
+        $basketList = new \PHPBackend\DatabaseTable($pdo, 'basket', 'id');
 
-        $stockController = new \BarclayCard\Controllers\Stock($stockList, $categoryList);
+        $stockController = new \BarclayCard\Controllers\Stock($stockList, $categoryList, $artistList);
         $userController = new \BarclayCard\Controllers\User($userList);
         $categoryController = new \BarclayCard\Controllers\Category($categoryList);
         $reviewController = new \BarclayCard\Controllers\Category($reviewList);
+        $orderController = new \BarclayCard\Controllers\Order($orderList);
+        $artistController = new \BarclayCard\Controllers\Artist($artistList);
+        $basketController = new \BarclayCard\Controllers\Basket($basketList);
         $shopController = new \BarclayCard\Controllers\Shop();
+        $checkoutController = new \BarclayCard\Controllers\Checkout();
 
         //tells the program which functions to use based on the URL annd whether we are using $_POST
 
@@ -31,7 +38,12 @@ class Routes implements \PHPBackend\Routes {
                 'GET' => [
                     'controller' => $stockController,
                     'function' => 'list'
+                ],
+                'POST' => [
+                    'controller' => $stockController,
+                    'function' => 'list'
                 ]
+
             ],
 
             'login' => [
@@ -45,11 +57,25 @@ class Routes implements \PHPBackend\Routes {
                 ]
             ],
 
+            'test' => [
+                'GET' => [
+                    'controller' => $checkoutController,
+                    'function' => 'test'
+                ]
+            ],
+
+            'product' => [
+                'GET' => [
+                    'controller' => $stockController,
+                    'function' => 'productpage'
+                ]
+            ],
+
             'logout' => [
                 'GET' => [
                     'controller' => $userController,
                     'function' => 'logout'
-                ]
+                ],
                 'login' => true
             ],
 
@@ -57,14 +83,44 @@ class Routes implements \PHPBackend\Routes {
                 'GET' => [
                     'controller' => $userController,
                     'function' => 'wishlist'
+                ],
+                'login' => true
+            ],
+
+            'dashboard' => [
+                'GET' => [
+                    'controller' => $shopController,
+                    'function' => 'user_dashboard'
+                ],
+                'login' => true
+            ],
+
+            'basket' => [
+                'GET' => [
+                    'controller' => $basketController,
+                    'function' => 'basket'
+                ],
+            ],
+
+            'checkout' => [
+                'POST' => [
+                    'controller' => $checkoutController,
+                    'function' => 'checkout'
                 ]
+            ],
+
+            'dashboard/orders' => [
+                'GET' => [
+                    'controller' => $shopController,
+                    'function' => 'user_dashboard'
+                ],
                 'login' => true
             ],
 
             'admin' => [
                 'GET' => [
                     'controller' => $shopController,
-                    'function' => 'dashboard_home'
+                    'function' => 'admin_dashboard'
                 ],
                 'admin' => true
             ],
@@ -218,13 +274,13 @@ class Routes implements \PHPBackend\Routes {
     }
 
     public function checkAdmin(){
-        if(isset($_SESSION['usertype'])){
-            $user_type = $_SESSION['usertype'];
-            if($user_type == '1'){
+        if(isset($_SESSION['user_type'])){
+            $user_type = $_SESSION['user_type'];
+            if($user_type != '1'){
                 header('location: /accessdenied');
             }
         }
-        else{
+        else {
             header('location: /accessdenied');
         }
     }

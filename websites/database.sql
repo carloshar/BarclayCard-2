@@ -57,10 +57,8 @@ DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `archived` int(1) NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,11 +67,36 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` VALUES (1,'cat1');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `product`
+-- Table structure for table `order`
+--
+
+DROP TABLE IF EXISTS `order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `order` (
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `state` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT 'pending',
+  PRIMARY KEY (`order_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order`
+--
+
+LOCK TABLES `order` WRITE;
+/*!40000 ALTER TABLE `order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table`product`
 --
 
 DROP TABLE IF EXISTS `product`;
@@ -83,8 +106,12 @@ CREATE TABLE `product` (
   `product_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `desc` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `price` decimal(10,0) NOT NULL,
+  `sale_price` decimal(10,0) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
+  `artist_id` int(11) DEFAULT NULL,
+  `archived` int(1) DEFAULT NULL,
   PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -95,8 +122,84 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'product1','product 1 description',100,0),(2,'product2','product 2 description',1,1),(3,'product3','product 3 description',21,1),(4,'product4','product 4 description',6,2);
+INSERT INTO `product` VALUES (1,'product1','product description1','alex_box-ross-ryan.jpg',100,0,0,0,0),(2,'product2','product description2','alex_appleface.jpg',200,0,1,1,0);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table`wishlist`
+--
+
+DROP TABLE IF EXISTS `wishlist`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `wishlist` (
+  `wishlist_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`wishlist_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wishlist`
+--
+
+LOCK TABLES `wishlist` WRITE;
+/*!40000 ALTER TABLE `wishlist` DISABLE KEYS */;
+INSERT INTO `wishlist` VALUES (1,2,'wishlist1','placeholder'), (2,3,'wishlist2', 'placeholder');
+/*!40000 ALTER TABLE `wishlist` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table`basket`
+--
+
+DROP TABLE IF EXISTS `basket`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `basket` (
+  `basket_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `quantity` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`basket_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `basket`
+--
+
+LOCK TABLES `basket` WRITE;
+/*!40000 ALTER TABLE `basket` DISABLE KEYS */;
+INSERT INTO `basket` VALUES (1,2,'basket1','placeholder'), (2,3,'basket2', 'placeholder');
+/*!40000 ALTER TABLE `basket` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table`artist`
+--
+
+DROP TABLE IF EXISTS `artist`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `artist` (
+  `artist_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`artist_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `artist`
+--
+
+LOCK TABLES `artist` WRITE;
+/*!40000 ALTER TABLE `artist` DISABLE KEYS */;
+INSERT INTO `artist` VALUES (1,'artist1'), (2,'artist2');
+/*!40000 ALTER TABLE `artist` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -133,15 +236,16 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `users_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `username` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `type` char(1) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `wishlist` varchar(255) COLLATE utf8mb4_unicode_ci,
-  PRIMARY KEY (`users_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `wishlist` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `order_num` int(5) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,6 +254,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'asd','asd','admin1','admin1','1',NULL,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -973,4 +1078,4 @@ USE `shopping_schema`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-20  0:25:24
+-- Dump completed on 2019-02-20  7:49:12

@@ -4,10 +4,12 @@ namespace BarclayCard\Controllers;
 class Stock {
     private $stockList;
     private $categoryList;
+    private $artistList;
 
-    public function __construct($stockList, $categoryList){
+    public function __construct($stockList, $categoryList, $artistList){
         $this->stockList=$stockList;
         $this->categoryList=$categoryList;
+        $this->artistList=$artistList;
     }
 
     public function home(){
@@ -20,62 +22,49 @@ class Stock {
     }
 
     public function list(){
-        if (isset($_GET['stock_item'])){
-            $stock = $this->stockList->find('categoryId', $_GET['stock_item']);
+        $stock = $this->stockList->findAll();
+        if (isset($_GET['product_id'])){
+
         }
-        else {
-            $stock = $this->stockList->findAll();
+        if (isset($_GET['category_id'])){
+            $category_id = $_GET['category_id'];
+            if ($_GET['category_id'] != "None"){
+                $new_stock = [];
+                foreach ($stock as $stock_item){
+                    if ($stock_item->category_id == $category_id){
+                        $new_stock = [];
+                        array_push($new_stock, $stock_item);
+                    }
+                }
+                $stock = $new_stock;
+            }
+        }
+        if (isset($_GET['artist_id'])){
+            $artist_id = $_GET['artist_id'];
+            if ($_GET['artist_id'] != "None"){
+                $new_stock = [];
+                foreach ($stock as $stock_item){
+                    if ($stock_item->artist_id == $artist_id){
+                        array_push($new_stock, $stock_item);
+                    }
+                }
+                $stock = $new_stock;
+            }
         }
 
+
         $cats = $this->categoryList->findAll();
+
+        $artists = $this->artistList->findAll();
 
         return ['template' => 'stock.html.php',
                 'title' => 'Shop - Our Stock',
                 'variables' => [
                     'stock' => $stock,
-                    'cats' => $cats
+                    'cats' => $cats,
+                    'artists' => $artists
                     ]
                 ];
-    }
-
-    public function contact(){
-
-        return ['template' => 'contact.html.php',
-                'title' => 'Shop - Contact',
-                'variables' => [
-
-                ]
-            ];
-    }
-
-    public function about(){
-
-        return ['template' => 'about.html.php',
-                'title' => 'Shop - About',
-                'variables' => [
-
-                ]
-            ];
-    }
-
-    public function stock_itemeers(){
-
-        return ['template' => 'stock_itemeers.html.php',
-                'title' => 'Shop - Careers',
-                'variables' => [
-
-                ]
-            ];
-    }
-
-    public function admin(){
-
-        return ['template' => 'admin.html.php',
-                'title' => 'Shop - Admin',
-                'variables' => [
-
-                ]
-            ];
     }
 
     public function editForm(){
@@ -222,6 +211,18 @@ class Stock {
                 'title' => 'Shop - Admin',
                 'variables' => [
 
+                ]
+            ];
+    }
+
+    public function productpage(){
+        $product_id = $_GET['product_id'];
+        $product = $this->stockList->find('product_id', $produt_id)
+
+        return ['template' => 'productpage.html.php',
+                'title' => 'Shop - Admin',
+                'variables' => [
+                    'product' => $product
                 ]
             ];
     }

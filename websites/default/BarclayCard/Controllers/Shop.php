@@ -6,9 +6,17 @@ class Shop {
     public function __construct(){
     }
 
-    public function dashboard_home(){
+    public function admin_dashboard(){
         return ['template' => 'admindashboard.html.php',
                 'title' => 'Dashboard - Admin',
+                'variables' => [
+                    ]
+            ];
+    }
+
+    public function user_dashboard(){
+        return ['template' => 'userdashboard.html.php',
+                'title' => 'Dashboard - User',
                 'variables' => [
                     ]
             ];

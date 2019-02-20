@@ -1,4 +1,4 @@
-<h2>Enquiries</h2>
+<h2>Reviews</h2>
 <table>
   <thead>
     <tr>

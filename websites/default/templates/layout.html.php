@@ -63,6 +63,11 @@
 			</nav>
 			<nav class="bc-nav nav--right">
 				<ul class="nav__items">
+					<li class="nav__item">
+						<a href="/basket" class="nav__link">
+							<i class="fas fa-shopping-basket"></i>
+						</a>
+					</li>
 					<?php
 					if (!isset($_SESSION['loggedin'])){ ?>
 						<li class="nav__item">
@@ -72,12 +77,17 @@
 						</li>
 					<?php
 					}
-					if (isset($_SESSION['loggedin'])){ ?>
+					if (isset($_SESSION['loggedin'])){
+						$user_type = $_SESSION['user_type']
+						?>
 						<li class="nav__item">
 							<a href="/logout" class="nav__link">
 								<i class="fas fa-sign-out-alt"></i>
 							</a>
 						</li>
+						<?php
+							if ($user_type  == 0){
+						?>
 						<li class="nav__item">
 							<a href="/dashboard" class="nav__link">
 								<i class="fas fa-user-circle"></i>
@@ -88,34 +98,25 @@
 								<i class="fas fa-heart"></i>
 							</a>
 						</li>
+						<?php
+							}
+							else if ($user_type == 1){
+						?>
 						<li class="nav__item">
-							<a href="/basket" class="nav__link">
-								<i class="fas fa-shopping-basket"></i>
+							<a href="/admin" class="nav__link">
+								<i class="fas fa-user-circle"></i>
 							</a>
 						</li>
-					<?php
+						<?php
+							}
 					}
-					?>
+						?>
 				</ul>
 			</nav>
 		</section>
-
-		<?php
-		if (strpos($_SERVER['REQUEST_URI'],'admin') !== false) { ?>
-			<main class="page__content page--admin">
-				<section class="left">
-					<ul>
-						<li><a href="/admin/link1">Link 1</a></li>
-						<li><a href="/admin/link2">Link 2</a></li>
-						<li><a href="/admin/link3">Link 3</a></li>
-						<li><a href="/admin/link4">Link 4</a></li>
-						<li><a href="/admin/link5">Link 5</a></li>
-						<li><a href="/admin/link6">Link 6</a></li>
-					</ul>
-				</section>
-				<section class="right">
+		<section class="right">
 		<?php //if admin is in the URL, use main class of admin. If not, use home.
-	} else if(strpos($_SERVER['REQUEST_URI'],'admin') !== true) { ?>
+		if(strpos($_SERVER['REQUEST_URI'],'admin') !== true) { ?>
 			<main class="page__content page--admin">
 		<?php } else { ?>
 			<main class ="page__content page--home">

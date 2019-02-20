@@ -29,15 +29,14 @@ class User {
             ];
         }
         $password = $result[0]->password;
-        if (password_verify($user['password'], $password)) {
-            session_start();
-            $_SESSION['loggedin'] = $result[0]->id;
-            if $result
-            header('location: /adminhome');
+        #if (password_verify($user['password'], $password)) {
+        if($user['password'] == $password) {
+            $_SESSION['loggedin'] = $result[0]->user_id;
+            $_SESSION['user_type'] = $result[0]->type;
             return [
-                'template' => 'admin.html.php',
+                'template' => 'index.html.php',
                 'variables' => [],
-                'title' => 'Shopping - Admin'
+                'title' => 'Shopping - Home'
             ];
 
         }
@@ -83,7 +82,7 @@ class User {
     //generates edit/add form the users
     public function editForm(){
         if (isset($_GET['id'])) {
-            $result = $this->userList->find('id', $_GET['id']);
+            $result = $this->userList->find('user_id', $_GET['id']);
             $users = $result[0];
         }
         else {

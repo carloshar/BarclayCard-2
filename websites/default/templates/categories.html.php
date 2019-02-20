@@ -1,4 +1,4 @@
-<h2>Manufacturers</h2>
+<h2>Categories</h2>
 <a class="new" href="/admin/categories/edit">Add new category</a>
 <table>
     <thead>
