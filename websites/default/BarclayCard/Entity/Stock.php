@@ -9,6 +9,8 @@ class Stock {
     public $categoryId;
     public $description;
     public $saleprice;
+    public $image
+    public $approved
 
     public function __construct(\PHPBackend\DatabaseTable $catList) {
         $this->catList = $catList;

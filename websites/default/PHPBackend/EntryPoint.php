@@ -17,6 +17,9 @@ class EntryPoint {
         if (isset($routes[$route]['login'])) {
             $this->routes->checkLogin();
         }
+        if (isset($routes[$route]['admin'])) {
+            $this->routes->checkAdmin();
+        }
 
 
         $controller = $routes[$route][$method]['controller'];

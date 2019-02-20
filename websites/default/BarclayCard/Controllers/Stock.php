@@ -3,9 +3,11 @@ namespace BarclayCard\Controllers;
 
 class Stock {
     private $stockList;
+    private $categoryList;
 
-    public function __construct($stockList){
+    public function __construct($stockList, $categoryList){
         $this->stockList=$stockList;
+        $this->categoryList=$categoryList;
     }
 
     public function home(){
@@ -25,10 +27,13 @@ class Stock {
             $stock = $this->stockList->findAll();
         }
 
+        $cats = $this->categoryList->findAll();
+
         return ['template' => 'stock.html.php',
                 'title' => 'Shop - Our Stock',
                 'variables' => [
                     'stock' => $stock,
+                    'cats' => $cats
                     ]
                 ];
     }
@@ -168,6 +173,7 @@ class Stock {
 
     public function delete(){
         //delete a stock item
+
         $this->stockList->delete($_POST['id']);
         $stock = $this->stockList->findAll();
 

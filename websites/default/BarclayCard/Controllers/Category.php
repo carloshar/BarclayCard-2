@@ -37,10 +37,6 @@ class Category {
         header('location: /admin/categories');
     }
 
-
-
-
-
     //deletes a category
     public function delete(){
         $this->catList->delete($_POST['id']);

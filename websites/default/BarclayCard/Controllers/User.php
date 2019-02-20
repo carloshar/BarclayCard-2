@@ -32,6 +32,7 @@ class User {
         if (password_verify($user['password'], $password)) {
             session_start();
             $_SESSION['loggedin'] = $result[0]->id;
+            if $result
             header('location: /adminhome');
             return [
                 'template' => 'admin.html.php',
@@ -62,7 +63,7 @@ class User {
         $users = $this->userList->findAll();
 
         return ['template' => 'users.html.php',
-                'title' => 'Shopping - Our Cars',
+                'title' => 'Admin - Users',
                 'variables' => [
                     'users' => $users
                     ]

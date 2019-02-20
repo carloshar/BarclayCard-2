@@ -3,7 +3,7 @@
 		<?php
 		foreach($cats as $cat) {
 			?>
-			<li><a href = "stock?stock_item=<?=$cat->id?>"><?=$cat->name?></a></li>
+			<li><a href = "product?category_id=<?=$cat->id?>"></a></li>
 		<?php
 		}
 		?>
@@ -14,6 +14,7 @@
 <ul class="stock">
 <?php
 foreach($stock as $stock_item) {
+	echo($stock_item->name);
 	if ($stock_item->archived != '1') { ?>
 <li>
 <?php
