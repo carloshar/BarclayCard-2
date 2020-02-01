@@ -1,8 +1,8 @@
--- MySQL dump 10.16  Distrib 10.1.37-MariaDB, for Linux (x86_64)
+-- MySQL dump 10.16  Distrib 10.1.36-MariaDB, for Linux (x86_64)
 --
--- Host: localhost    Database:
+-- Host: localhost    Database: 
 -- ------------------------------------------------------
--- Server version	10.1.37-MariaDB
+-- Server version	10.1.36-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -24,37 +24,39 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `Barclays` /*!40100 DEFAULT CHARACTER S
 USE `Barclays`;
 
 --
--- Table structure for table `basket_item`
+-- Table structure for table `basket_items`
 --
 
-DROP TABLE IF EXISTS `basket_item`;
+DROP TABLE IF EXISTS `basket_items`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `basket_item` (
+CREATE TABLE `basket_items` (
   `basket_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
   `state` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT 'pending',
   PRIMARY KEY (`basket_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `basket_item`
+-- Dumping data for table `basket_items`
 --
 
-LOCK TABLES `basket_item` WRITE;
-/*!40000 ALTER TABLE `basket_item` DISABLE KEYS */;
-/*!40000 ALTER TABLE `basket_item` ENABLE KEYS */;
+LOCK TABLES `basket_items` WRITE;
+/*!40000 ALTER TABLE `basket_items` DISABLE KEYS */;
+/*!40000 ALTER TABLE `basket_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `category`
+-- Table structure for table `catagories`
 --
 
-DROP TABLE IF EXISTS `category`;
+DROP TABLE IF EXISTS `catagories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `category` (
+CREATE TABLE `catagories` (
   `catagory_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`catagory_id`)
@@ -62,48 +64,48 @@ CREATE TABLE `category` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `category`
+-- Dumping data for table `catagories`
 --
 
-LOCK TABLES `category` WRITE;
-/*!40000 ALTER TABLE `category` DISABLE KEYS */;
-/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+LOCK TABLES `catagories` WRITE;
+/*!40000 ALTER TABLE `catagories` DISABLE KEYS */;
+/*!40000 ALTER TABLE `catagories` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `product`
+-- Table structure for table `products`
 --
 
-DROP TABLE IF EXISTS `product`;
+DROP TABLE IF EXISTS `products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `product` (
-  `product_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `products` (
+  `products_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `desc` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `price` decimal(10,0) NOT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`product_id`)
+  `catagory_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`products_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `product`
+-- Dumping data for table `products`
 --
 
-LOCK TABLES `product` WRITE;
-/*!40000 ALTER TABLE `product` DISABLE KEYS */;
-/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+LOCK TABLES `products` WRITE;
+/*!40000 ALTER TABLE `products` DISABLE KEYS */;
+/*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `review`
+-- Table structure for table `reviews`
 --
 
-DROP TABLE IF EXISTS `review`;
+DROP TABLE IF EXISTS `reviews`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `review` (
+CREATE TABLE `reviews` (
   `review_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `rating` int(1) DEFAULT NULL,
@@ -113,22 +115,22 @@ CREATE TABLE `review` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `review`
+-- Dumping data for table `reviews`
 --
 
-LOCK TABLES `review` WRITE;
-/*!40000 ALTER TABLE `review` DISABLE KEYS */;
-/*!40000 ALTER TABLE `review` ENABLE KEYS */;
+LOCK TABLES `reviews` WRITE;
+/*!40000 ALTER TABLE `reviews` DISABLE KEYS */;
+/*!40000 ALTER TABLE `reviews` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `users_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -139,12 +141,215 @@ CREATE TABLE `user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `users`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Current Database: `furniture`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `furniture` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
+
+USE `furniture`;
+
+--
+-- Table structure for table `category`
+--
+
+DROP TABLE IF EXISTS `category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `category`
+--
+
+LOCK TABLES `category` WRITE;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` VALUES (2,'Beds'),(4,'Sofas'),(5,'Wardrobes'),(8,'Tables');
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `enquiries`
+--
+
+DROP TABLE IF EXISTS `enquiries`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `enquiries` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `telephone` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `query` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `complete` int(11) DEFAULT '0',
+  `staff_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `enquiries`
+--
+
+LOCK TABLES `enquiries` WRITE;
+/*!40000 ALTER TABLE `enquiries` DISABLE KEYS */;
+INSERT INTO `enquiries` VALUES (1,'John','example@meme.com','05643872162','I cant find a 5 seater sofa, do you have any in stock?',0,NULL),(2,'Dan','DanTheMan@Yahoo.com','07989554','Which supermarket sells the best potatoes?',1,3),(5,'John','DanTheMan@Yahoo.com','','Which supermarket sells the best potatoes?',1,3),(6,'Test','TEST@ME.COM','','Which supermarket sells the best potatoes?',1,3);
+/*!40000 ALTER TABLE `enquiries` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `furniture`
+--
+
+DROP TABLE IF EXISTS `furniture`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `furniture` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(2000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `price` decimal(5,2) DEFAULT NULL,
+  `categoryId` int(11) DEFAULT NULL,
+  `state` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hidden` char(1) COLLATE utf8mb4_unicode_ci DEFAULT '0',
+  `photo` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `furniture`
+--
+
+LOCK TABLES `furniture` WRITE;
+/*!40000 ALTER TABLE `furniture` DISABLE KEYS */;
+INSERT INTO `furniture` VALUES (1,'Four Poster','A beautiful four poster double bed.',999.00,2,'NEW','1',1),(10,'King','A king sized bed with a modern style',659.00,2,'NEW','0',1),(11,'Corner Sofa','A modern styled corner sofa',699.00,4,'NEW','0',1),(12,'Black Leather Sofa','A stylish classic. A black leather sofa, not out of place in any home!',499.00,4,'NEW','0',1),(13,'Oak Wardrobe','An Oak Wardrobe, two drawers and space to hang all your clothes',399.00,5,'NEW','0',1),(21,'Test','Testing',300.00,8,'Second-Hand','0',2);
+/*!40000 ALTER TABLE `furniture` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `staff`
+--
+
+DROP TABLE IF EXISTS `staff`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `staff` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `staff`
+--
+
+LOCK TABLES `staff` WRITE;
+/*!40000 ALTER TABLE `staff` DISABLE KEYS */;
+INSERT INTO `staff` VALUES (3,'admin1','$2y$10$z0dVdzYyB.XyjAnhqgZvVuDQSI5fVSavsQHmxXSfS0qyNWg8Ee3o2'),(4,'admin','$2y$10$xrYl6LN/MLUZVXIaGA0fa.03QQFvpmsEFgu054QdH9.y.fTgH/gFi');
+/*!40000 ALTER TABLE `staff` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `updates`
+--
+
+DROP TABLE IF EXISTS `updates`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `updates` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `updates`
+--
+
+LOCK TABLES `updates` WRITE;
+/*!40000 ALTER TABLE `updates` DISABLE KEYS */;
+INSERT INTO `updates` VALUES (1,'Latest Furniture','This Wardrobe is the latest in the market.','2019-03-22 00:00:00'),(7,'Art Exhibition Tuesday','Let us know what you think of this art','2019-03-24 02:34:54');
+/*!40000 ALTER TABLE `updates` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Current Database: `hotelbookings`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `hotelbookings` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
+
+USE `hotelbookings`;
+
+--
+-- Table structure for table `bookings`
+--
+
+DROP TABLE IF EXISTS `bookings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bookings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `room` int(11) NOT NULL,
+  `start` datetime NOT NULL,
+  `end` datetime NOT NULL,
+  `email` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sentCon` char(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'N',
+  `accessCode` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bookings`
+--
+
+LOCK TABLES `bookings` WRITE;
+/*!40000 ALTER TABLE `bookings` DISABLE KEYS */;
+INSERT INTO `bookings` VALUES (1,101,'2019-06-25 00:00:00','2019-06-27 00:00:00','example@me.com','Y','1011'),(2,102,'2019-06-25 00:00:00','2019-06-27 00:00:00','example@me.com','Y','1022'),(3,104,'2019-06-25 00:00:00','2019-06-27 00:00:00','example@me.com','Y','1043'),(4,103,'2019-06-25 00:00:00','2019-06-28 00:00:00','example@me.com','Y','1034'),(5,104,'2019-06-28 00:00:00','2019-06-30 00:00:00','auto1234@live.co.uk','Y','1045'),(6,103,'2019-06-28 00:00:00','2019-06-30 00:00:00','ambermoodey@gmail.com','Y','1036'),(7,104,'2019-07-09 00:00:00','2019-07-10 00:00:00','auto1234@live.co.uk','Y','1047'),(8,104,'2019-07-12 00:00:00','2019-07-15 00:00:00','auto1234@live.co.uk','Y','1048'),(9,103,'2019-07-23 00:00:00','2019-07-26 00:00:00','stuart@moodeyit.com','Y','1039');
+/*!40000 ALTER TABLE `bookings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `rooms`
+--
+
+DROP TABLE IF EXISTS `rooms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `rooms` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `number` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rooms`
+--
+
+LOCK TABLES `rooms` WRITE;
+/*!40000 ALTER TABLE `rooms` DISABLE KEYS */;
+INSERT INTO `rooms` VALUES (1,101),(2,102),(3,103),(4,104);
+/*!40000 ALTER TABLE `rooms` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -951,12 +1156,12 @@ CREATE TABLE IF NOT EXISTS `slow_log` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Current Database: `shopping_schema`
+-- Current Database: `new_schema`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `shopping_schema` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `new_schema` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
 
-USE `shopping_schema`;
+USE `new_schema`;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -967,4 +1172,4 @@ USE `shopping_schema`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-19 15:01:44
+-- Dump completed on 2020-02-01 20:01:32
