@@ -4,8 +4,8 @@
 
 html {font-family: 'Oxygen-Regular', verdana, sans-serif; }
 
-body {background-color: #C6AAA0;}
-header {background-color: #516666
+body {background-image: url("/images/vichy.png");}
+header {background-image: url("/images/argyle.png")
 
 ; color: white;
 
@@ -17,11 +17,11 @@ header img {width: 500px; float: left; background-color: white; border-radius: 2
 header aside {float: right; margin-top: 15px;}
 header section {width: 1000px; display: block; margin:auto;}
 header h1 {float: left; margin-left: 20px;}
-nav {width: 100%; background-color: #37AFAF; overflow: auto;}
+nav {width: 100%; background-image: url("/images/vichy.png"); overflow: auto;}
 body > img {width: 100%; display: block;}
 nav ul {width: 1000px; margin: auto; display: block; list-style-type: none;}
 nav ul li {width: 25%; float: left; overflow: auto; text-align: center;}
-nav a {color: white; padding-top: 10px; display: block;}
+nav a {color: black; padding-top: 10px; display: block; text-decoration: none;}
 
 
 
@@ -32,12 +32,14 @@ header h1 {font-weight: normal;}
 
 
 h1 { font-size:4em; color: white; text-align: center; padding-top: 20px; text-shadow: 2px 2px 2px #000;}
-
+.right h1 {color: black;}
 main {min-height: 75vh; background-color: #eee; width: 70vw; display: block; margin: auto; box-shadow: 0px 0px 10px #888; color:#444;}
 footer {min-height: 5vh;}
 
 main h2 {font-size:2em;}
 .home {padding: 5vw; width: 60vw;}
+
+.left {background-image: url("/images/argyle.png");}
 
 p, li, h2 {margin-bottom: 1em;}
 ol {margin-left: 30px;}
@@ -46,7 +48,7 @@ pre {margin-top: 20px;}
 code {background-color: #ccc;}
 pre code {display: block;}
 
-footer {background-color: #8ED0CD; padding: 10px; color: black;}
+footer {background-image: url("/images/argyle.png"); padding: 10px; color: white;}
 
 form select, form label, form input, form textarea {float: left; width: 200px; padding: 10px; margin-top: 20px;}
 form label {clear: left;}
@@ -96,10 +98,15 @@ table td input[type="submit"] {margin: 0; float: right; width: auto; padding: au
 
 .products > img {max-height: 300px;}
 
-a:hover {color: #ccc !important;}
+a:hover {animation: mymove 2s !important;}
 
 .right {padding: 20px;}
 
 main h1 {color: #666;}
 
 main img {display: block;}
+
+@keyframes mymove {
+    from {color:white;}
+    to {color: black;}
+  }

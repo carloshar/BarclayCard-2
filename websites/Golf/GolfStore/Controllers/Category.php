@@ -12,7 +12,7 @@ class Category {
 		$categories = $this->categoriesTable->findAll();
 
 		return ['template' => 'admin/category.html.php',
-				'title' => 'Golf Store - ADMIN Category List',
+				'title' => 'The Golf Shop - ADMIN Category List',
 				'variables' => [
 						'categories' => $categories
 					]

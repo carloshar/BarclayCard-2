@@ -14,7 +14,7 @@
 
 
 	<?php
-    
+    $total = 0;
 	foreach ($basket as $item) {
 	 ?>
 		<li>
@@ -32,7 +32,18 @@
 		<input type="submit" name="remove" value="Remove from Basket">
 		</form>
 		</li>
-	<?php  }?>
+	<?php $total = $total + ($item->getProduct()->price * $item->quantity); }?>
+        <li>
+            <h3>Sub Total | £<?=$total?></h3>
+            <?php if($total>0){ $total = $total + 5;?>
+            <p> Shipping cost: £5 </p>
+            <?php } ?>
+            <h2>Total | £<?=$total?> </h2>
+
+            <form action="#" method='get' enctype="multipart/form-data">
+            <input type="submit" name="checkout" value="Checkout">
+            </form>
+        </li>
 
 </ul>
 

@@ -16,7 +16,7 @@ class Product {
 				$categories = $this->categoryTable->findAll();
 				$products = $this->productTable->findAll();
 				return ['template' => 'list.html.php',
-						'title' => 'Golf Store - Product List',
+						'title' => 'The Golf Shop - Product List',
 						'variables' => [
 								'products' => $products
 							]
@@ -44,7 +44,7 @@ class Product {
 					}
 					
 					return ['template' => 'list.html.php',
-					'title' => 'Golf Store - Product List',
+					'title' => 'The Golf Shop - Product List',
 					'variables' => [
 							'products' => $products,
 							'added' => $added
@@ -53,7 +53,7 @@ class Product {
 				}else{
 
 				return ['template' => 'list.html.php',
-						'title' => 'Golf Store - Product List',
+						'title' => 'The Golf Shop - Product List',
 						'variables' => [
 								'products' => $products
 							]
@@ -70,7 +70,7 @@ class Product {
 		return [
 			'template' => 'about.html.php',
 			'variables' => [],
-			'title' => 'Frans Furniture - About Us'
+			'title' => 'The Golf Shop - About Us'
 		];
 
 	}
@@ -80,7 +80,7 @@ class Product {
 		return [
 			'template' => 'faq.html.php',
 			'variables' => [],
-			'title' => 'Frans Furniture - FAQs'
+			'title' => 'The Golf Shop - FAQs'
 		];
 
 	}
@@ -90,7 +90,7 @@ class Product {
 		return [
 			'template' => 'home.html.php',
 			'variables' => [],
-			'title' => 'Frans Furniture - Home'
+			'title' => 'The Golf Shop - Home'
 		];
 
 	}

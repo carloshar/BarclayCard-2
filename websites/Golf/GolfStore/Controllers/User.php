@@ -16,7 +16,7 @@ class User{
             return [
                 'template' => 'login.html.php',
                 'variables' => ['login' => $login],
-                'title' => 'Frans Furniture - LOGIN'
+                'title' => 'The Golf Shop - LOGIN'
             ];
     
         }
@@ -46,7 +46,7 @@ class User{
                         'template' => 'login.html.php',
                         'variables' => ['login' => $login,
                                         'errors' => $errors],
-                        'title' => 'Frans Furniture - LOGIN'
+                        'title' => 'The Golf Shop - LOGIN'
                     ]; 
                 }
                 
@@ -54,7 +54,7 @@ class User{
             return [
                 'template' => 'login.html.php',
                 'variables' => ['login' => $login],
-                'title' => 'Frans Furniture - LOGIN'
+                'title' => 'The Golf Shop - LOGIN'
             ];
     
         }
@@ -63,7 +63,7 @@ class User{
             return [
                 'template' => 'admin/admin.html.php',
                 'variables' => [],
-                'title' => 'Frans Furniture - ADMIN'
+                'title' => 'The Golf Shop - ADMIN'
             ];
         }
 
@@ -72,7 +72,7 @@ class User{
             return [
                 'template' => 'admin/staff.html.php',
                 'variables' => ['staff'=>$staff],
-                'title' => 'Frans Furniture - ADMIN Staff List'
+                'title' => 'The Golf Shop - ADMIN Staff List'
             ];
         }
 
@@ -94,14 +94,14 @@ class User{
                         'template' => 'admin/staff.html.php',
                         'variables' => ['staff'=>$staff,
                                         'errors'=>$errors],
-                        'title' => 'Frans Furniture - ADMIN Staff List'
+                        'title' => 'The Golf Shop - ADMIN Staff List'
                     ]; 
                 }
             }else{
                 return [
                     'template' => 'admin/staff.html.php',
                     'variables' => ['staff'=>$staff],
-                    'title' => 'Frans Furniture - ADMIN Staff List'
+                    'title' => 'The Golf Shop - ADMIN Staff List'
                 ]; 
             }
         }
