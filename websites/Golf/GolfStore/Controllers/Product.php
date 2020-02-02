@@ -18,7 +18,8 @@ class Product {
 				return ['template' => 'list.html.php',
 						'title' => 'The Golf Shop - Product List',
 						'variables' => [
-								'products' => $products
+								'products' => $products,
+								'categories' => $categories
 							]
 						];
 	}
@@ -47,7 +48,8 @@ class Product {
 					'title' => 'The Golf Shop - Product List',
 					'variables' => [
 							'products' => $products,
-							'added' => $added
+							'added' => $added,
+							'categories' => $categories
 						]
 					];
 				}else{
@@ -55,7 +57,8 @@ class Product {
 				return ['template' => 'list.html.php',
 						'title' => 'The Golf Shop - Product List',
 						'variables' => [
-								'products' => $products
+								'products' => $products,
+								'categories' => $categories
 							]
 						];
 				}

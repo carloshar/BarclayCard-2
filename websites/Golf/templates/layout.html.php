@@ -28,7 +28,7 @@
 		</ul>
 
 	</nav>
-<img src="/images/randombanner.php"/>
+<img class="banner" src="/images/randombanner.php"/>
 	
     <?=$output?>
 
