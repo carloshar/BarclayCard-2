@@ -5,9 +5,9 @@ class Routes implements \Backend\Routes {
 	public function getRoutes() {
 		require '../database.php';
 
-		$categoriesTable = new \Backend\DatabaseTable($pdo, 'category', 'catagory_id');
-		$productTable = new \Backend\DatabaseTable($pdo, 'product', 'product_id', '\GolfStore\Entities\item', [$categoriesTable]);
-		$basketTable = new \Backend\DatabaseTable($pdo, 'basket_item', 'basket_id', '\GolfStore\Entities\basket', [$productTable]);
+		$categoriesTable = new \Backend\DatabaseTable($pdo, 'catagories', 'catagory_id');
+		$productTable = new \Backend\DatabaseTable($pdo, 'products', 'products_id', '\GolfStore\Entities\item', [$categoriesTable]);
+		$basketTable = new \Backend\DatabaseTable($pdo, 'basket_items', 'basket_id', '\GolfStore\Entities\basket', [$productTable]);
 		
 
 		$productController = new \GolfStore\Controllers\Product($productTable,$categoriesTable,$basketTable);

@@ -2,7 +2,7 @@
 namespace GolfStore\Entities;
 class basket {
 public $products;
-public $product_id;
+public $products_id;
 public $quantity;
 public $basket_id;
 
@@ -11,7 +11,7 @@ public $basket_id;
  }
 
  public function getProduct() {
-    return $this->products->find('product_id', $this->product_id)[0];
+    return $this->products->find('products_id', $this->product_id)[0];
  }
 
 }

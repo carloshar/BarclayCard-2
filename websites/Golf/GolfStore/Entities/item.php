@@ -6,14 +6,14 @@ class item {
  public $name;
  public $description;
  public $price;
- public $category_id;
+ public $catagory_id;
 
 
  public function __construct(\Backend\DatabaseTable $CatTable) {
  $this->CatTable = $CatTable;
  }
  public function getCategory() {
-    return $this->CatTable->find('catagory_id', $this->category_id)[0];
+    return $this->CatTable->find('catagory_id', $this->catagory_id)[0];
  }
  public function getAllCat(){
      return $this->CatTable->findAll();
