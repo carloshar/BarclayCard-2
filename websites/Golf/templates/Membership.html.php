@@ -27,6 +27,9 @@
         <input type="hidden" name="signup[date]" value="<?=$today?>">
 		<input type="submit" name="signupS" value="Add To Basket">
 		</form>
+		<?php if(isset($con)){ ?>
+			<p> Your member ship application has been added to your basket. </p>
+		<?php } ?>
         </li><li>
         <h3>Login</h3>
         <form action="/membership" method="post" enctype="multipart/form-data"> 

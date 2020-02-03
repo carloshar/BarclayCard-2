@@ -48,7 +48,8 @@ class Member{
 
                 return [
                     'template' => 'Membership.html.php',
-                    'variables' => ['members' => $members],
+                    'variables' => ['members' => $members,
+                                    'con' => true],
                     'title' => 'The Golf Shop - Membership'
                 ];
             }else{

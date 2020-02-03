@@ -70,6 +70,23 @@
 	<?php $total = $total + 15; }?>
 
 
+	<?php foreach ($rounds as $round) {
+	 ?>
+		<li>
+		<div class="details">
+        <img src="/images/round.jfif"/>
+		<h2>Round Booking(s)</h2>
+		<h4>Price: £ <?=25*$round->norounds?></h4>
+		<p>Date: <?=$round->date?> </p>
+		<p>Start: <?=$round->start?> </p>
+		</div>
+        <form action="/basket" method="post" enctype="multipart/form-data"> 
+		<input type="hidden" name="basket[rounds_id]" value=<?=$round->rounds_id?>>
+		<input type="submit" name="removeR" value="Remove from Basket">
+		</form>
+		</li>
+	<?php $total = $total + (25*$round->norounds); }?>
+
 
         <li>
             <h3>Sub Total | £<?=$total?></h3>

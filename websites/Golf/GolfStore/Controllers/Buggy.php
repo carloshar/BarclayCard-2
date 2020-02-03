@@ -22,6 +22,13 @@ class Buggy{
            
             $book = $_POST['booking'];
             $this->buggyTable->insert($book);
+            $con = $_POST['booking']['date'];
+            return [
+                'template' => 'buggy.html.php',
+                'variables' => ['buggy' => $buggy,
+                                'con' => $con],
+                'title' => 'The Golf Shop - Buggy Hire'
+            ];
         }else{
             return [
                 'template' => 'buggy.html.php',

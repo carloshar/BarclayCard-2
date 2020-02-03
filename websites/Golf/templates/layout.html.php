@@ -28,9 +28,9 @@
 			<li><a href="/membership">Membership</a></li>
 			<li><a href="/buggyhire">Buggy Hire</a></li>
 			<?php if(isset($_SESSION['loggedin'])){?>
-			<li><a href="/">Booking Rounds</a></li>
+			<li><a href="/bookrounds">Booking Rounds</a></li>
 			<?php if($_SESSION['type'] == "A"){?>
-			<li><a href="/">Admin</a></li>
+			<li><a href="/admin">Admin</a></li>
 			<?php }} ?>
 			
 		</ul>
@@ -42,7 +42,7 @@
 
 
 	<footer>
-		&copy; The Golf Shop 2020
+		&copy; Stuart Balls, The Best Prices Around 2020
 	</footer>
 </body>
 </html>
