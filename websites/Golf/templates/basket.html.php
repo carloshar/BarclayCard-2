@@ -59,8 +59,6 @@
 		<h2>Buggy Hire</h2>
 		<h4>Price: £ 15</h4>
 		<p>Date: <?=$bug->date?> </p>
-		<p>From: <?=$bug->fromdate?> </p>
-		<p>To: <?=$bug->todate?></p>
 		</div>
         <form action="/basket" method="post" enctype="multipart/form-data"> 
 		<input type="hidden" name="basket[buggy_id]" value=<?=$bug->buggy_id?>>
@@ -76,9 +74,10 @@
 		<div class="details">
         <img src="/images/round.jfif"/>
 		<h2>Round Booking(s)</h2>
-		<h4>Price: £ <?=25*$round->norounds?></h4>
+		<h4>Price: £ <?=25*$round->norounds?> (£25 per person)</h4>
 		<p>Date: <?=$round->date?> </p>
 		<p>Start: <?=$round->start?> </p>
+		<p> Number of Guests: <?=$round->norounds?> </p>
 		</div>
         <form action="/basket" method="post" enctype="multipart/form-data"> 
 		<input type="hidden" name="basket[rounds_id]" value=<?=$round->rounds_id?>>

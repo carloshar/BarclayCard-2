@@ -26,7 +26,7 @@
 			<li><a href="/faq">FAQ's</a></li>
 			<li><a href="/basket">Basket</a></li>
 			<li><a href="/membership">Membership</a></li>
-			<li><a href="/buggyhire">Buggy Hire</a></li>
+			
 			<?php if(isset($_SESSION['loggedin'])){?>
 			<li><a href="/bookrounds">Booking Rounds</a></li>
 			<?php if($_SESSION['type'] == "A"){?>

@@ -17,7 +17,7 @@ class Routes implements \Backend\Routes {
 		$basketController = new \GolfStore\Controllers\Basket($basketTable , $buggyTable , $roundsTable);
 		$membersController = new \GolfStore\Controllers\Member($membersTable);
 		$buggyController = new \GolfStore\Controllers\Buggy($buggyTable);
-		$roundsController = new \GolfStore\Controllers\Rounds($roundsTable);
+		$roundsController = new \GolfStore\Controllers\Rounds($roundsTable, $buggyTable);
 
 		session_start();
 		$routes =[

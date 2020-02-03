@@ -37,7 +37,7 @@ CREATE TABLE `basket_items` (
   `quantity` int(11) NOT NULL,
   `state` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT 'pending',
   PRIMARY KEY (`basket_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,6 @@ CREATE TABLE `basket_items` (
 
 LOCK TABLES `basket_items` WRITE;
 /*!40000 ALTER TABLE `basket_items` DISABLE KEYS */;
-INSERT INTO `basket_items` VALUES (3,0,1,3,'pending'),(4,0,2,2,'pending');
 /*!40000 ALTER TABLE `basket_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +62,7 @@ CREATE TABLE `buggy` (
   `fromdate` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `todate` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`buggy_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +71,6 @@ CREATE TABLE `buggy` (
 
 LOCK TABLES `buggy` WRITE;
 /*!40000 ALTER TABLE `buggy` DISABLE KEYS */;
-INSERT INTO `buggy` VALUES (6,'2020-02-04 00:00:00','11:11','12:12');
 /*!40000 ALTER TABLE `buggy` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,7 +190,7 @@ CREATE TABLE `rounds` (
   `start` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `norounds` int(11) DEFAULT NULL,
   PRIMARY KEY (`rounds_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -201,7 +199,6 @@ CREATE TABLE `rounds` (
 
 LOCK TABLES `rounds` WRITE;
 /*!40000 ALTER TABLE `rounds` DISABLE KEYS */;
-INSERT INTO `rounds` VALUES (4,'2020-02-04 00:00:00','12:00',3);
 /*!40000 ALTER TABLE `rounds` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1254,4 +1251,4 @@ USE `new_schema`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-03 16:00:11
+-- Dump completed on 2020-02-03 21:11:25

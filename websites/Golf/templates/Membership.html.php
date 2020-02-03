@@ -10,7 +10,7 @@
 
 	<section class="right">
 
-		<h1>Memebership Sign Up / Login</h1>
+		<h1>Membership Sign Up / Login</h1>
 
 	<ul class="furniture">
 
@@ -28,7 +28,7 @@
 		<input type="submit" name="signupS" value="Add To Basket">
 		</form>
 		<?php if(isset($con)){ ?>
-			<p> Your member ship application has been added to your basket. </p>
+			<p> Your membership application has been added to your basket. </p>
 		<?php } ?>
         </li><li>
         <h3>Login</h3>

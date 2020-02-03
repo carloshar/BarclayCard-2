@@ -3,9 +3,11 @@ namespace GolfStore\Controllers;
 class Rounds{
 
     private $roundsTable;
+    private $buggyTable;
 
-    public function __construct($roundsTable) {
+    public function __construct($roundsTable, $buggyTable) {
         $this->roundsTable = $roundsTable;
+        $this->buggyTable = $buggyTable;
     }
 
     public function load(){
@@ -21,6 +23,10 @@ class Rounds{
         $rounds = $this->roundsTable->findAll();
         if(isset($_POST['booking'])){
             $this->roundsTable->save($_POST['booking']);
+            if($_POST['buggy'] == 1){
+                $book['booking']['date'] = $_POST['booking']['date'];
+                $this->buggyTable->insert($book['booking']);
+            }
             return [
                 'template' => 'rounds.html.php',
                 'variables' => ['rounds' => $rounds,
