@@ -46,8 +46,32 @@ CREATE TABLE `basket_items` (
 
 LOCK TABLES `basket_items` WRITE;
 /*!40000 ALTER TABLE `basket_items` DISABLE KEYS */;
-INSERT INTO `basket_items` VALUES (2,0,4,1,'pending');
 /*!40000 ALTER TABLE `basket_items` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `buggy`
+--
+
+DROP TABLE IF EXISTS `buggy`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `buggy` (
+  `buggy_id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime DEFAULT NULL,
+  `fromdate` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `todate` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`buggy_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `buggy`
+--
+
+LOCK TABLES `buggy` WRITE;
+/*!40000 ALTER TABLE `buggy` DISABLE KEYS */;
+/*!40000 ALTER TABLE `buggy` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -72,6 +96,33 @@ LOCK TABLES `catagories` WRITE;
 /*!40000 ALTER TABLE `catagories` DISABLE KEYS */;
 INSERT INTO `catagories` VALUES (1,'Drivers'),(2,'Putters'),(3,'Bags'),(4,'Irons');
 /*!40000 ALTER TABLE `catagories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `members`
+--
+
+DROP TABLE IF EXISTS `members`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `members` (
+  `member_id` int(11) NOT NULL AUTO_INCREMENT,
+  `join_date` datetime DEFAULT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Type` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT 'C',
+  PRIMARY KEY (`member_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `members`
+--
+
+LOCK TABLES `members` WRITE;
+/*!40000 ALTER TABLE `members` DISABLE KEYS */;
+INSERT INTO `members` VALUES (1,'2020-02-03 00:00:00','admin','admin','A'),(2,NULL,'cust','cust','C');
+/*!40000 ALTER TABLE `members` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1175,4 +1226,4 @@ USE `new_schema`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-03 10:52:29
+-- Dump completed on 2020-02-03 14:22:32

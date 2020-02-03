@@ -13,7 +13,8 @@
 				<p>Sat: 09:00-17:00</p>
 				<p>Sun: 10:00-16:00</p>
 			</aside>
-			<h1>The Golf Shop</h1>
+			<h1>Stuart Balls, </h1>
+			<h1>The Best Prices Around</h1>
 
 		</section>
 	</header>
@@ -24,6 +25,13 @@
 			<li><a href="/about">About Us</a></li>
 			<li><a href="/faq">FAQ's</a></li>
 			<li><a href="/basket">Basket</a></li>
+			<li><a href="/membership">Membership</a></li>
+			<li><a href="/buggyhire">Buggy Hire</a></li>
+			<?php if(isset($_SESSION['loggedin'])){?>
+			<li><a href="/">Booking Rounds</a></li>
+			<?php if($_SESSION['type'] == "A"){?>
+			<li><a href="/">Admin</a></li>
+			<?php }} ?>
 			
 		</ul>
 

@@ -8,13 +8,17 @@ class Routes implements \Backend\Routes {
 		$categoriesTable = new \Backend\DatabaseTable($pdo, 'catagories', 'catagory_id');
 		$productTable = new \Backend\DatabaseTable($pdo, 'products', 'products_id', '\GolfStore\Entities\item', [$categoriesTable]);
 		$basketTable = new \Backend\DatabaseTable($pdo, 'basket_items', 'basket_id', '\GolfStore\Entities\basket', [$productTable]);
-		
+		$membersTable = new \Backend\DatabaseTable($pdo, 'members', 'members_id');
+		$buggyTable = 	new \Backend\DatabaseTable($pdo, 'buggy', 'buggy_id');
+
 
 		$productController = new \GolfStore\Controllers\Product($productTable,$categoriesTable,$basketTable);
 		$categoryController = new \GolfStore\Controllers\Category($categoriesTable);
-		$basketController = new \GolfStore\Controllers\Basket($basketTable);
-		
+		$basketController = new \GolfStore\Controllers\Basket($basketTable , $buggyTable);
+		$membersController = new \GolfStore\Controllers\Member($membersTable);
+		$buggyController = new \GolfStore\Controllers\Buggy($buggyTable);
 
+		session_start();
 		$routes =[
 			''=>[
 				'GET'=>[
@@ -54,7 +58,27 @@ class Routes implements \Backend\Routes {
 						'function'=> 'remove'
 					]
 				],
-				];
+			'membership'=>[
+				'GET'=>[
+					'controller'=> $membersController,
+					'function'=> 'load'
+				],
+				'POST'=>[
+					'controller'=> $membersController,
+					'function'=> 'post'
+				]
+			],
+			'buggyhire'=>[
+				'GET'=>[
+					'controller'=> $buggyController,
+					'function'=> 'load'
+				],
+				'POST'=>[
+					'controller'=> $buggyController,
+					'function'=> 'post'
+				]
+			],
+			];
 		//The above array works by using the route as the first part of the array then the method used if none assume GET, 
 		//then you state the controller and function for the page the user is routing too.
 
