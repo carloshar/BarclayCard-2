@@ -37,7 +37,7 @@ CREATE TABLE `basket_items` (
   `quantity` int(11) NOT NULL,
   `state` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT 'pending',
   PRIMARY KEY (`basket_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,6 +46,7 @@ CREATE TABLE `basket_items` (
 
 LOCK TABLES `basket_items` WRITE;
 /*!40000 ALTER TABLE `basket_items` DISABLE KEYS */;
+INSERT INTO `basket_items` VALUES (2,0,4,1,'pending');
 /*!40000 ALTER TABLE `basket_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,7 +61,7 @@ CREATE TABLE `catagories` (
   `catagory_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`catagory_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,6 +70,7 @@ CREATE TABLE `catagories` (
 
 LOCK TABLES `catagories` WRITE;
 /*!40000 ALTER TABLE `catagories` DISABLE KEYS */;
+INSERT INTO `catagories` VALUES (1,'Drivers'),(2,'Putters'),(3,'Bags'),(4,'Irons');
 /*!40000 ALTER TABLE `catagories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,10 +85,10 @@ CREATE TABLE `products` (
   `products_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `desc` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `price` decimal(10,0) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
   `catagory_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`products_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,6 +97,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
+INSERT INTO `products` VALUES (1,'Driver','A driver',199.00,1),(2,'Putter','A putter',89.95,2),(3,'Bag','A bag',199.99,3),(4,'Iron','A Iron',176.99,4);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1172,4 +1175,4 @@ USE `new_schema`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-02 18:11:01
+-- Dump completed on 2020-02-03 10:52:29
